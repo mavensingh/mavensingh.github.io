@@ -7,16 +7,17 @@ body {
   margin: 0;
   padding: 0;
 }
-i {
-  margin-right: 10px;
+
+nav {
+  box-shadow: 0 10px 6px -5px #777;
+  background-color: rgb(39, 40, 34);
+  color: #fff;
 }
 /*----------multi-level-accordian-menu------------*/
 .flex {
   display: flex;
   font-size: 30px;
   text-align: center;
-  background-color: #000;
-  color: #fff;
   /* padding: 15px; */
 }
 .flex1 {
