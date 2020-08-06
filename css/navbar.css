@@ -2,6 +2,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 * {
   margin: 0;
@@ -39,6 +40,14 @@ nav {
   text-decoration: none;
   padding: 15px;
   color: black;
+}
+
+.menu > ul > a:hover {
+  /* background-color: violet; */
+  background-image: linear-gradient(to right, #136a8a, #267871);
+  border-radius: 100px;
+  color: whitesmoke;
+  transition: 0.2s ease-in-out;
 }
 .menu > ul > a > li {
   list-style-type: none;
