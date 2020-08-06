@@ -1,4 +1,10 @@
 .flexing {
   display: flex;
   justify-content: space-around;
+  background-color: black;
+  color: white;
+}
+.image-icon > img {
+  size: 50px;
+  border-radius: 50%;
 }
