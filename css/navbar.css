@@ -1,20 +1,24 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Raleway', sans-serif;
   scroll-behavior: smooth;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
 
 nav {
-  box-shadow: 0 10px 6px -5px #777;
+  box-shadow: 0 5px 10px -5px #777;
   /* background-color: #fff; */
-  background-image: linear-gradient(to right, #64b3f4, #c2e59c);
-  color: rgb(39, 40, 34);
+  /* background-image: linear-gradient(to right, #64b3f4, #c2e59c); */
+  background-color: indigo;
+  /* color: rgb(39, 40, 34); */
+  color: whitesmoke;
 }
+
 /*----------multi-level-accordian-menu------------*/
 .flex {
   display: flex;
@@ -22,39 +26,48 @@ nav {
   text-align: center;
   /* padding: 15px; */
 }
+
 .flex1 {
   justify-content: space-around;
+  padding-block-end: 0.2rem;
 }
+
 .nav_logo {
-  padding-top: 23px;
+  padding-top: 18px;
   padding-bottom: 20px;
 }
+
 .menu {
   padding-top: 10px;
 }
-.menu > ul {
+
+.menu>ul {
   display: inline-flex;
 }
 
-.menu > ul > a {
+.menu>ul>a {
   text-decoration: none;
-  padding: 15px;
-  color: black;
+  padding: 20px;
+  /* color: black; */
+  color: whitesmoke;
+
 }
 
-.menu > ul > a:hover {
+.menu>ul>a:hover {
   /* background-color: violet; */
   background-image: linear-gradient(to right, #136a8a, #267871);
   border-radius: 100px;
   color: whitesmoke;
   transition: 0.2s ease-in-out;
 }
-.menu > ul > a > li {
+
+.menu>ul>a>li {
   list-style-type: none;
   font-size: 15px;
   font-weight: 100;
 }
-.nav_logo > h3 {
+
+.nav_logo>h3 {
   font-style: normal;
   font-weight: bold;
 }
