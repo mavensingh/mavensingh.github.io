@@ -29,16 +29,16 @@ nav {
 
 .flex1 {
   justify-content: space-around;
-  padding-block-end: 0.2rem;
+  /* padding-block-end: 0.2rem; */
 }
 
 .nav_logo {
-  padding-top: 18px;
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .menu {
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .menu>ul {
