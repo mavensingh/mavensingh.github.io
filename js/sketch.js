@@ -20,8 +20,8 @@ const options = {
 function preload() {
     // youtubeData = loadTable('subscribers_geo.csv', 'header');
 
-    youtubeData = loadTable('https://mavensingh.github.io/youtube-visualization/watch_time_geo.csv', 'header');
-    countries = loadJSON('https://mavensingh.github.io/youtube-visualization/countries.json');
+    youtubeData = loadTable('../data/watch_time_geo.csv', 'header');
+    countries = loadJSON('../data/countries.json');
 }
 
 function setup() {
