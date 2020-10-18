@@ -19,7 +19,7 @@ const options = {
 
 function preload() {
     // youtubeData = loadTable('subscribers_geo.csv', 'header');
-    youtubeData = loadTable('./youtube-visualization/countries.json/watch_time_geo.csv', 'header');
+    youtubeData = loadTable('./youtube-visualization/watch_time_geo.csv', 'header');
     countries = loadJSON('./youtube-visualization/countries.json');
 }
 
