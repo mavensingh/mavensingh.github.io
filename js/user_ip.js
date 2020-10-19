@@ -68,7 +68,7 @@ function setup(loc, localTime) {
     saveAsJSON(loc, localTime)
 }
 
-function saveAsJSON(loc) {
+function saveAsJSON(loc, localTime) {
     let exampleObj = [{
         "ip": loc['ip'],
         "lat": loc['lat'],
