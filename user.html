@@ -1,11 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <script src="js/user_ip.js"></script> -->
 </head>
 
 <body onload="getLocation()">
@@ -39,6 +38,44 @@
                 document.getElementById("info").innerHTML = "Browser CodeName: " + app.appCodeName;;
             }
         </script>
+</body>
+
+</html> -->
+
+
+
+<!-- index.html -->
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Magic App</title>
+    <meta name="description" content="Magic App">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="js/user_ip.js">
+</head>
+
+<body>
+    <h1>Magic App Here</h1>
+    <div id="main">
+        <div id="time" class="sub">
+            <div>
+                <h2>Your local time</h2>
+                <span class="local"></span>
+            </div>
+            <div>
+                <h2>Magic App Server Time</h2>
+                <span class="server"></span>
+            </div>
+        </div>
+        <div id="location" class="sub">
+            <h2>And you are in...</h2>
+            <div class="address"></div>
+        </div>
+    </div>
 </body>
 
 </html>

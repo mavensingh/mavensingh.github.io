@@ -46,17 +46,62 @@
 // });
 
 
-var x = document.getElementById("ip");
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+document.addEventListener("DOMContentLoaded", function (event) {
+    var address = document.querySelector('.address')
+    if (!navigator.geolocation) {
+        console.log("Geolocation is not supported by your browser");
+        ipLookup();
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        navigator.geolocation.getCurrentPosition(success, error);
     }
-}
 
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
-}
+    function success(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        reverseGeocodingWithGoogle(longitude, latitude)
+    }
+
+    function error() {
+        console.log("Unable to retrieve your location");
+    }
+
+    function ipLookup() {
+        fetch('https://extreme-ip-lookup.com/json/')
+            .then(res => res.json())
+            .then(response => {
+                fallbackProcess(response)
+            })
+            .catch((data, status) => {
+                address.innerText = 'We could not find your location'
+            })
+    }
+
+    function reverseGeocodingWithGoogle(latitude, longitude) {
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?
+        latlng=${latitude},${longitude}&key=AIzaSyAsotGElz8IoU64QYjYy6uQqIx_3DCZJBQ`)
+            .then(res => res.json())
+            .then(response => {
+                processUserData(response)
+            })
+            .catch(status => {
+                ipLookup()
+            })
+    }
+
+    function processUserData(response) {
+        address.innerText = response.results[0].formatted_address
+    }
+
+    function fallbackProcess(response) {
+        address.innerText = `${response.city}, ${response.country}`
+    }
+
+    var localTime = jstz.determine().name();
+    var serverTime = "Asia/India";
+    document.querySelector('.server').innerText = new Date().toLocaleString("en-IN", {
+        timeZone: serverTime
+    });
+    document.querySelector('.local').innerText = new Date().toLocaleString("en-IN", {
+        timeZone: localTime
+    });
+});
