@@ -59,7 +59,7 @@
 </head>
 
 <body>
-    <h1>Magic App Here</h1>
+    <!-- <h1>Magic App Here</h1>
     <div id="main">
         <div id="time" class="sub">
             <div>
@@ -75,69 +75,98 @@
             <h2>And you are in...</h2>
             <div class="address"></div>
         </div>
-    </div>
+    </div> -->
+    <div id="googleMap" style="width:100%;height:400px;"></div>
     <script>
-        document.addEventListener("DOMContentLoaded", function (event) {
-            var address = document.querySelector('.address')
-            if (!navigator.geolocation) {
-                console.log("Geolocation is not supported by your browser");
-                ipLookup();
-            } else {
-                navigator.geolocation.getCurrentPosition(success, error);
-            }
+        // document.addEventListener("DOMContentLoaded", function (event) {
+        //     var address = document.querySelector('.address')
+        //     if (!navigator.geolocation) {
+        //         console.log("Geolocation is not supported by your browser");
+        //         ipLookup();
+        //     } else {
+        //         navigator.geolocation.getCurrentPosition(success, error);
+        //     }
 
-            function success(position) {
-                var latitude = position.coords.latitude;
-                var longitude = position.coords.longitude;
-                reverseGeocodingWithGoogle(longitude, latitude)
-            }
+        //     function success(position) {
+        //         var latitude = position.coords.latitude;
+        //         var longitude = position.coords.longitude;
+        //         reverseGeocodingWithGoogle(longitude, latitude)
+        //     }
 
-            function error() {
-                console.log("Unable to retrieve your location");
-            }
+        //     function error() {
+        //         console.log("Unable to retrieve your location");
+        //     }
 
-            function ipLookup() {
-                fetch('https://extreme-ip-lookup.com/json/')
-                    .then(res => res.json())
-                    .then(response => {
-                        console.log(response)
-                        fallbackProcess(response)
-                    })
-                    .catch((data, status) => {
-                        address.innerText = 'We could not find your location'
-                    })
-            }
+        //     function ipLookup() {
+        //         fetch('https://extreme-ip-lookup.com/json/')
+        //             .then(res => res.json())
+        //             .then(response => {
+        //                 console.log(response)
+        //                 fallbackProcess(response)
+        //             })
+        //             .catch((data, status) => {
+        //                 address.innerText = 'We could not find your location'
+        //             })
+        //     }
 
-            function reverseGeocodingWithGoogle(latitude, longitude) {
-                fetch(`https://maps.googleapis.com/maps/api/geocode/json?
-        latlng=${latitude},${longitude}&key=AIzaSyAsotGElz8IoU64QYjYy6uQqIx_3DCZJBQ`)
-                    .then(res => res.json())
-                    .then(response => {
-                        processUserData(response)
-                    })
-                    .catch(status => {
-                        ipLookup()
-                    })
-            }
+        //     function reverseGeocodingWithGoogle(latitude, longitude) {
+        //         fetch(`https://maps.googleapis.com/maps/api/geocode/json?
+        // latlng=${latitude},${longitude}&key=AIzaSyAsotGElz8IoU64QYjYy6uQqIx_3DCZJBQ`)
+        //             .then(res => res.json())
+        //             .then(response => {
+        //                 processUserData(response)
+        //             })
+        //             .catch(status => {
+        //                 ipLookup()
+        //             })
+        //     }
 
-            function processUserData(response) {
-                address.innerText = response.results[0].formatted_address
-            }
+        //     function processUserData(response) {
+        //         address.innerText = response.results[0].formatted_address
+        //     }
 
-            function fallbackProcess(response) {
-                address.innerText = `${response.city}, ${response.country}`
-            }
+        //     function fallbackProcess(response) {
+        //         address.innerText = `${response.city}, ${response.country}`
+        //     }
 
-            var localTime = jstz.determine().name();
-            var serverTime = "Asia/Novosibirsk";
-            document.querySelector('.server').innerText = new Date().toLocaleString("en-US", {
-                timeZone: serverTime
-            });
-            document.querySelector('.local').innerText = new Date().toLocaleString("en-US", {
-                timeZone: localTime
-            });
-        });
+        //     var localTime = jstz.determine().name();
+        //     var serverTime = "Asia/Novosibirsk";
+        //     document.querySelector('.server').innerText = new Date().toLocaleString("en-US", {
+        //         timeZone: serverTime
+        //     });
+        //     document.querySelector('.local').innerText = new Date().toLocaleString("en-US", {
+        //         timeZone: localTime
+        //     });
+        // });
+        function myMap() {
+            var req = new XMLHttpRequest();
+            req.overrideMimeType("application/json");
+            req.open('GET', 'https://ipapi.co/json/', true);
+            req.onload = function () {
+                if (req.status == 200) {
+                    var loc = JSON.parse(req.responseText);
+                    // console.log(loc);
+                    // document.getElementById('loc').innerHTML = loc['city'] + ', ' + loc['country'];
+                    var mapProp = {
+                        center: new google.maps.LatLng(Number(loc['latitude']), Number(loc['longitude'])),
+                        zoom: 5,
+                    };
+                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                } else {
+                    console.log('HTTP Error ' + req.status);
+                }
+            };
+            req.onerror = function () {
+                if (req.status == 0) {
+                    alert('Please disable your ad-blocker');
+                }
+            };
+            req.send(null);
+        }
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsotGElz8IoU64QYjYy6uQqIx_3DCZJBQ&callback=myMap">
+    </script>
+
 </body>
 
 </html>
