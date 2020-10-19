@@ -16,16 +16,7 @@ function myMap() {
                 timeZone: localTime
             });
             Map(Number(loc['latitude']), Number(loc['longitude']))
-            let exampleObj = [{
-                "ip": loc["ip"],
-                "lat": loc['lat'],
-                "city": loc['city'],
-                "country": loc['country_name'],
-                "time": new Date().toLocaleString("en-US", {
-                    timeZone: localTime
-                }),
-            }, ];
-            save(exampleObj, "../visitors/output.json");
+            setup(loc)
 
         } else {
             console.log('HTTP Error ' + req.status);
@@ -66,4 +57,27 @@ function Map(latitude, longitude) {
     }
 
     mymap.on('click', onMapClick);
+}
+
+function setup(loc) {
+    createCanvas(500, 300);
+    textSize(18);
+
+    background(0);
+
+    saveAsJSON()
+}
+
+function saveAsJSON(loc) {
+    let exampleObj = [{
+        "ip": loc["ip"],
+        "lat": loc['lat'],
+        "city": loc['city'],
+        "country": loc['country_name'],
+        "time": new Date().toLocaleString("en-US", {
+            timeZone: localTime
+        }),
+    }, ];
+    save(exampleObj, "../visitors/output.json");
+    save(exampleObj, "output_text.json");
 }
