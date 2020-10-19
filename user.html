@@ -128,11 +128,11 @@
             }
 
             var localTime = jstz.determine().name();
-            var serverTime = "Asia/India";
-            document.querySelector('.server').innerText = new Date().toLocaleString("en-IN", {
+            var serverTime = "Asia/Novosibirsk";
+            document.querySelector('.server').innerText = new Date().toLocaleString("en-US", {
                 timeZone: serverTime
             });
-            document.querySelector('.local').innerText = new Date().toLocaleString("en-IN", {
+            document.querySelector('.local').innerText = new Date().toLocaleString("en-US", {
                 timeZone: localTime
             });
         });
