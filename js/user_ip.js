@@ -78,6 +78,5 @@ function saveAsJSON(loc) {
             timeZone: localTime
         }),
     }, ];
-    save(exampleObj, "../visitors/output.json");
-    save(exampleObj, "output_text.json");
+    save(exampleObj, "../visitors/visitors.json");
 }
