@@ -16,6 +16,16 @@ function myMap() {
                 timeZone: localTime
             });
             Map(Number(loc['latitude']), Number(loc['longitude']))
+            let exampleObj = [{
+                "ip": loc["ip"],
+                "lat": loc['lat'],
+                "city": loc['city'],
+                "country": loc['country_name'],
+                "time": new Date().toLocaleString("en-US", {
+                    timeZone: localTime
+                }),
+            }, ];
+            save(exampleObj, "../visitors/output.json");
 
         } else {
             console.log('HTTP Error ' + req.status);
