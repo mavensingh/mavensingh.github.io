@@ -41,6 +41,6 @@ function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
 
 // Usage
 
-getUserIP(function (ip) {
+window.onload = getUserIP(function (ip) {
     document.getElementById("ip").innerHTML = 'Got your IP ! : ' + ip + " | verify in http://www.whatismypublicip.com/";
 });
