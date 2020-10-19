@@ -65,7 +65,7 @@ function setup(loc) {
 
     background(0);
 
-    saveAsJSON()
+    saveAsJSON(loc)
 }
 
 function saveAsJSON(loc) {
