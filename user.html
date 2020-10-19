@@ -8,9 +8,23 @@
     <script src="js/user_ip.js"></script>
 </head>
 
-<p>
-    <p>Loading User IP Address<span id="ip"></span></p>
+<p>Loading User IP Address <span id="ip"></span></p>
+<script>
+    var x = document.getElementById("ip");
 
-    </body>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+</script>
+</body>
 
 </html>
