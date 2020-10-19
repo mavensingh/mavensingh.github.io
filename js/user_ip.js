@@ -16,7 +16,7 @@ function myMap() {
                 timeZone: localTime
             });
             Map(Number(loc['latitude']), Number(loc['longitude']))
-            setup(loc)
+            setup(loc, localTime)
 
         } else {
             console.log('HTTP Error ' + req.status);
@@ -59,13 +59,13 @@ function Map(latitude, longitude) {
     mymap.on('click', onMapClick);
 }
 
-function setup(loc) {
+function setup(loc, localTime) {
     createCanvas(500, 300);
     textSize(18);
 
     background(0);
 
-    saveAsJSON(loc)
+    saveAsJSON(loc, localTime)
 }
 
 function saveAsJSON(loc) {
