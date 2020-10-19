@@ -70,7 +70,7 @@ function setup(loc) {
 
 function saveAsJSON(loc) {
     let exampleObj = [{
-        "ip": loc["ip"],
+        "ip": loc['ip'],
         "lat": loc['lat'],
         "city": loc['city'],
         "country": loc['country_name'],
