@@ -84,7 +84,7 @@
             req.onload = function () {
                 if (req.status == 200) {
                     var loc = JSON.parse(req.responseText);
-                    // console.log(loc);
+                    console.log(loc);
                     document.querySelector('div.address').innerHTML = loc['city'] + ', ' + loc['country'];
 
                 } else {
