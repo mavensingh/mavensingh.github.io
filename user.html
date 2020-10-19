@@ -9,23 +9,32 @@
 </head>
 
 <body onload="getLocation()">
-    <p>Loading User IP Address <span id="ip"></span></p>
-    <script>
-        var x = document.getElementById("ip");
+    <p>
+        <p>Loading Client Info</p>
+        <div id="info">
+            <span id="ip"></span>
+        </div>
+        <script>
+            var x = document.getElementById("ip");
 
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                    AppName(navigator);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
             }
-        }
 
-        function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-        }
-    </script>
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude +
+                    "<br>Longitude: " + position.coords.longitude;
+            }
+
+            function AppName(app) {
+                document.getElementById("info").innerHTML = "Browser CodeName: " + app.appCodeName;;
+            }
+        </script>
 </body>
 
 </html>
