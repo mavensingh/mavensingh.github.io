@@ -8,7 +8,7 @@
     <meta name="description" content="Magic App">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/user.css">
-
+    <script src="js/user_ip.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
@@ -40,68 +40,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-with-data-2012-2022.min.js">
-    </script>
-    <script>
-        function myMap() {
-            var req = new XMLHttpRequest();
-            req.overrideMimeType("application/json");
-            req.open('GET', 'https://ipapi.co/json/', true);
-            req.onload = function () {
-                if (req.status == 200) {
-                    var loc = JSON.parse(req.responseText);
-                    console.log(loc);
-                    document.querySelector('.address').innerHTML = loc['city'] + ', ' + loc['country_name'];
-                    var localTime = loc['timezone'];
-                    var serverTime = "Asia/Kolkata";
-                    document.querySelector('.server').innerText = new Date().toLocaleString("en-US", {
-                        timeZone: serverTime
-                    });
-                    document.querySelector('.local').innerText = new Date().toLocaleString("en-US", {
-                        timeZone: localTime
-                    });
-                    Map(Number(loc['latitude']), Number(loc['longitude']))
-
-                } else {
-                    console.log('HTTP Error ' + req.status);
-                }
-            };
-            req.onerror = function () {
-                if (req.status == 0) {
-                    alert('Please disable your ad-blocker');
-                }
-            };
-            req.send(null);
-        }
-    </script>
-    <script>
-        function Map(latitude, longitude) {
-            var mymap = L.map('mapid').setView([latitude, longitude], 13);
-
-            L.tileLayer(
-                'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                    maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    id: 'mapbox/streets-v11',
-                    tileSize: 512,
-                    zoomOffset: -1
-                }).addTo(mymap);
-
-            L.marker([latitude, longitude]).addTo(mymap);
-            // .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
-            var popup = L.popup();
-
-            function onMapClick(e) {
-                popup
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(mymap);
-            }
-
-            mymap.on('click', onMapClick);
-        }
     </script>
 
 </body>
