@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/user.css">
 </head>
 
-<body>
+<body onload="myMap()">
     <h1>Magic App Here</h1>
     <div id="main">
         <div id="time" class="sub">
@@ -28,6 +28,10 @@
             <div class="address"></div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.23/moment-timezone-with-data-2012-2022.min.js">
+    </script>
     <script>
         function myMap() {
             var req = new XMLHttpRequest();
@@ -37,7 +41,42 @@
                 if (req.status == 200) {
                     var loc = JSON.parse(req.responseText);
                     console.log(loc);
-                    document.querySelector('.address').innerHTML = loc['city'] + ', ' + loc['country'];
+                    document.querySelector('.address').innerHTML = loc['city'] + ', ' + loc['country_name'];
+                    // ip: "2409:4050:e92:5110:385a:dedc:6c1b:3949"
+                    // version: "IPv6"
+                    // city: "Delhi"
+                    // region: "National Capital Territory of Delhi"
+                    // region_code: "DL"
+                    // country: "IN"
+                    // country_name: "India"
+                    // country_code: "IN"
+                    // country_code_iso3: "IND"
+                    // country_capital: "New Delhi"
+                    // country_tld: ".in"
+                    // continent_code: "AS"
+                    // in_eu: false
+                    // postal: "110054"
+                    // latitude: 28.6519
+                    // longitude: 77.2315
+                    // timezone: "Asia/Kolkata"
+                    // utc_offset: "+0530"
+                    // country_calling_code: "+91"
+                    // currency: "INR"
+                    // currency_name: "Rupee"
+                    // languages:
+                    //     "en-IN,hi,bn,te,mr,ta,ur,gu,kn,ml,or,pa,as,bh,sat,ks,ne,sd,kok,doi,mni,sit,sa,fr,lus,inc"
+                    // country_area: 3287590
+                    // country_population: 1352617328
+                    // asn: "AS55836"
+                    // org: "Reliance Jio Infocomm Limited"
+                    var localTime = loc['timezone'];
+                    var serverTime = "Asia/Kolkata";
+                    document.querySelector('.server').innerText = new Date().toLocaleString("en-US", {
+                        timeZone: serverTime
+                    });
+                    document.querySelector('.local').innerText = new Date().toLocaleString("en-US", {
+                        timeZone: localTime
+                    });
 
                 } else {
                     console.log('HTTP Error ' + req.status);
@@ -56,7 +95,6 @@
 </body>
 
 </html>
-
 
 
 <!-- <!DOCTYPE html>
