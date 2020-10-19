@@ -11,11 +11,13 @@
 <body onload="getLocation()">
     <p>
         <p>Loading Client Info</p>
-        <div id="info">
-            <span id="ip"></span>
+        <div>
+            <span id="latlon"></span>
+            <span id="info"></span>
+
         </div>
         <script>
-            var x = document.getElementById("ip");
+            var x = document.getElementById("latlon");
 
             function getLocation() {
                 if (navigator.geolocation) {
