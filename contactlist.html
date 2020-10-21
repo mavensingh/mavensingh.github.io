@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactList App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="form-group">
+            <input type="email" class="form-control form-control-lg" id="searchTerm" style="border-radius: 0%;">
+        </div>
+        <div class="row">
+            <div class="col-4 my-3">
+                <div class="list-group" id="list-tab" role="tablist">
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent">
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create
+                Contact</button>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Create New Contact</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="first-name" class="col-form-label">FirstName:</label>
+                                <input type="text" class="form-control" id="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name" class="col-form-label">LastName:</label>
+                                <input type="text" class="form-control" id="last-name" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contact-number" class="col-form-label">Contact Number:</label>
+                                <input type="text" class="form-control" id="contact-number" maxlength="10" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email-address" class="col-form-label">Email:</label>
+                                <input type="email" class="form-control" id="email-address" required />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Don't Save</button>
+                        <button type="button" class="btn btn-primary" id="save" data-dismiss="modal">Save
+                            Contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/contactlist.js"></script>
+</body>
+
+</html>
