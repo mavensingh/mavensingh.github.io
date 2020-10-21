@@ -9,7 +9,7 @@ save.addEventListener("click", () => {
     // console.log(firstname, lastname, contact, email)
     var node = document.createElement("a");
     node.setAttribute("class", "list-group-item list-group-item-action");
-    node.setAttribute("id", "list-" + firstname + "-list");
+    node.setAttribute("id", "list-" + firstname + lastname + "-list");
     node.setAttribute("data-toggle", "list");
     node.setAttribute("href", "#list-" + firstname)
     node.setAttribute("role", "tab");
@@ -24,7 +24,7 @@ save.addEventListener("click", () => {
     divNode.setAttribute("class", "tab-pane fade show");
     divNode.setAttribute("id", "list-" + firstname);
     divNode.setAttribute("role", "tabpanel");
-    divNode.setAttribute("aria-labelledby", "list-" + firstname + "-list");
+    divNode.setAttribute("aria-labelledby", "list-" + firstname + lastname + "-list");
     var divTextNode = document.createTextNode(`FirstName:${firstname}
     LastName:${lastname}
     Contact-Number:${contact}
