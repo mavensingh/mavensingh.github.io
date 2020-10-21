@@ -11,9 +11,9 @@ save.addEventListener("click", () => {
     node.setAttribute("class", "list-group-item list-group-item-action");
     node.setAttribute("id", "list-" + firstname + lastname + "-list");
     node.setAttribute("data-toggle", "list");
-    node.setAttribute("href", "#list-" + firstname)
+    node.setAttribute("href", "#list-" + firstname + lastname)
     node.setAttribute("role", "tab");
-    node.setAttribute("aria-controls", firstname);
+    node.setAttribute("aria-controls", firstname + lastname);
 
     var textnode = document.createTextNode(firstname + " " + lastname);
     node.appendChild(textnode);
@@ -22,7 +22,7 @@ save.addEventListener("click", () => {
 
     var divNode = document.createElement("div")
     divNode.setAttribute("class", "tab-pane fade show");
-    divNode.setAttribute("id", "list-" + firstname);
+    divNode.setAttribute("id", "list-" + firstname + lastname);
     divNode.setAttribute("role", "tabpanel");
     divNode.setAttribute("aria-labelledby", "list-" + firstname + lastname + "-list");
     var divTextNode = document.createTextNode(`FirstName:${firstname}
