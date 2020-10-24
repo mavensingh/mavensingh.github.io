@@ -6,7 +6,8 @@ function myMap() {
         if (req.status == 200) {
             var loc = JSON.parse(req.responseText);
             console.log(loc);
-            document.querySelector('.address').innerHTML = loc['city'] + ', ' + loc['country_name'] + "<br/>" + navigator.platform;
+            document.querySelector('.address').innerHTML = loc['city'] + ', ' + loc['country_name'] + "<br/>" +
+                "<h4>Platform(Device) <span>" + navigator.platform + "</span></h4>";
             var localTime = loc['timezone'];
             var serverTime = "Asia/Kolkata";
             document.querySelector('.server').innerText = new Date().toLocaleString("en-US", {
