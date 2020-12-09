@@ -72,7 +72,28 @@ and is wrapped around the whole page content, except for the footer in this exam
       <div class="w3-row" style="line-break:loose;">
           <p>In this Tutorial we're going to learn about how to extract the specific extension files from the directory.
               Before starting the tutorial we expect from you that you have little bit knowledge of golang not so advanced but you're familiar with the code of Golang.
+              So let's starts writing the code
+              <br/>
+              <br/>
+              We have divide the code into bunch of files but you can write only in one file called main.go
+              so we're going to follow the steps into main.go file
+              <br>
+              <br>
+              Code:
               <script src="https://gist.github.com/mavensingh/94befbb40d1c3a76072900afd77ac342.js"></script>
+              line Number 10: We've created a struct called <b>Flag</b> struct have only one field called FolderPath with string data type. Flag helps us to store the commands we're using into tool
+              <br>
+              <br>
+              line number 15 : We've created a function called <b>loadFlags</b> and inside of this function we've added <b>flag.String()</b> function to get the <b>path of the folder</b>.
+              Then we're enabling that flag using <b>flag.Parse()</b> function.
+              <b>flag.Parse() helps us to use the flag we're taking from user without using this function we can't access flag values.</b>
+              Then we're appending the flag value into struct and returning it.
+              <br>
+              <br>
+              line number 23: We've declared main function and in main function we're calling the <b>loadFlags</b> function and function returns the Flag struct which have FolderPath value, Then we've added a condition to cross check the value
+              if value of the flag is blank or 0 so we're printing the warning and closing program.
+              <br>
+              <br>
               open
 
               <script src="https://gist.github.com/mavensingh/cc11ddca2bd1cd35fd7d765a86efa660.js"></script>
