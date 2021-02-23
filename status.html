@@ -35,8 +35,8 @@
             var level = document.querySelector('#level');
             level.textContent = Math.floor(battery.level * 100) + "%";
             level.style.width = Math.floor(battery.level * 100) + "%";
-            document.querySelector('#dischargingTime').textContent = Math.floor(battery.dischargingTime / 60);
-            document.querySelector('#chargingTime').textContent = Math.floor(battery.chargingTime/60);
+            document.querySelector('#dischargingTime').textContent = Math.floor(battery.dischargingTime / 60) + " M";
+            document.querySelector('#chargingTime').textContent = Math.floor(battery.chargingTime/60) + " M";
         }
 
         navigator.getBattery().then(function(battery) {
