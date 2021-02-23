@@ -33,10 +33,10 @@
         function updateBatteryStatus(battery) {
             document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
             var level = document.querySelector('#level');
-            level.textContent = battery.level * 100 + "%";
-            level.style.width = battery.level * 100 + "%";
-            document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
-            document.querySelector('#chargingTime').textContent = battery.chargingTime/60;
+            level.textContent = Math.floor(battery.level * 100) + "%";
+            level.style.width = Math.floor(battery.level * 100) + "%";
+            document.querySelector('#dischargingTime').textContent = Math.floor(battery.dischargingTime / 60);
+            document.querySelector('#chargingTime').textContent = Math.floor(battery.chargingTime/60);
         }
 
         navigator.getBattery().then(function(battery) {
