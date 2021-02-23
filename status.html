@@ -2,10 +2,29 @@
 <html>
 <head>
   <title>Battery Status</title>
+  <style>
+        .container { 
+            background-color: rgb(192, 192, 192); 
+            width: 15%; 
+            border-radius: 5px;
+            margin: 20px; 
+        }
+        .battery { 
+            background-color: rgb(116, 194, 92); 
+            color: white; 
+            padding: 1%; 
+            text-align: right; 
+            font-size: 12px; 
+            border-radius: 10px; 
+        }
+  </style>
 </head>
 <body>
   <div id="charging">(charging state unknown)</div>
-  <div id="level">(battery level unknown)</div>
+  <div class="container"> 
+    <div class="battery" id="level">0%</div> 
+    </div> 
+  <!-- <div id="level">(battery level unknown)</div> -->
   <div id="dischargingTime">(discharging time unknown)</div>
   <div id="chargingTime">(Charging Time Unknown)</div>
 
@@ -13,7 +32,9 @@
     (function(){window.onload = function () {
         function updateBatteryStatus(battery) {
             document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
-            document.querySelector('#level').textContent = battery.level * 100 + "%";
+            var level = document.querySelector('#level');
+            level.textContent = battery.level * 100 + "%";
+            level.style.width = battery.level * 100 + "%";
             document.querySelector('#dischargingTime').textContent = battery.dischargingTime / 60;
             document.querySelector('#chargingTime').textContent = battery.chargingTime/60;
         }
