@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="network_type"></p>
+    <p id="network_effective_type"></p>
+    <p id="current_downlink_speed"></p>
+    <p id="max_downlink_speed"></p>
+    <p id="round_trimup"></p>
+    <script>
+        (function(){
+            document.getElementById("network_type").innerText = navigator.connection.type;
+            document.getElementById("network_effective_type").innerText = navigator.connection.effectiveType;
+            document.getElementById("current_downlink_speed").innerText = navigator.connection.downlinkMax;
+            document.getElementById("max_downlink_speed").innerText = navigator.connection.downlink;
+            document.getElementById("round_trimup").innerText = navigator.connection.rtt;
+        })();
+        navigator.connection.addEventListener("change",function(){
+            document.getElementById("network_type").innerText = navigator.connection.type;
+            document.getElementById("network_effective_type").innerText = navigator.connection.effectiveType;
+            document.getElementById("current_downlink_speed").innerText = navigator.connection.downlinkMax;
+            document.getElementById("max_downlink_speed").innerText = navigator.connection.downlink;
+            document.getElementById("round_trimup").innerText = navigator.connection.rtt;
+        });
+    </script>
+</body>
+</html>
