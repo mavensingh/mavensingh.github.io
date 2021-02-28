@@ -10,11 +10,6 @@
     <p><button onclick="startFunction()">Grab video & start recording</button></p>
     <p><button onclick="download()">Download video</button></p>
     <p><button onclick="pause()">stop video</button></p>
-    <p id="connection">Connection Type</p>
-    <script>
-      var ct = window.navigator.connection.type;
-      document.getElementById("connection").innerHTML += ` : ${ct}`;
-    </script>
     <script>
         const constraints = { "video": { width: { max: 320 } }, "audio" : true };
 
