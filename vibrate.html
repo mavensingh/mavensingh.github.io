@@ -7,13 +7,21 @@
 </head>
 <body>
     <h1> Vibrating the device </h1>
+    <button id="single">Single</button>
+    <button id="multiple">Multiple</button>
     <script>
-        // vibrate for 300 milliseconds
-        // then wait for 100 milliseconds
-        // vibrate again for 200 milliseconds
-        // wait for 50 milliseconds
-        // vibrate again for 300 milliseconds
+        document.getElementById("single").addEventListener("click",function() {
+            // vibrate device for 300 milliseconds
+            window.navigator.vibrate(300);
+        });
+        document.getElementById("single").addEventListener("click",function() {
+            // vibrate for 300 milliseconds
+            // then wait for 100 milliseconds
+            // vibrate again for 200 milliseconds
+            // wait for 50 milliseconds
+            // vibrate again for 300 milliseconds
         window.navigator.vibrate([300, 100, 200, 50, 300]);
+        });
     </script>
 </body>
 </html>
